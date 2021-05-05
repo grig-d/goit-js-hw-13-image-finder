@@ -1,9 +1,43 @@
 import './styles.css';
-import './js/apiService';
+import './js/render-components';
 import refs from './js/refs';
-import searchImages from './js/search-images';
+import apiService from './js/apiService';
+import cardTemplate from './templates/card.hbs';
+
+const imageApiService = new apiService();
 
 refs.searchForm.addEventListener('submit', searchImages);
+refs.loadMoreBtn.addEventListener('click', loadMore);
+
+function searchImages(event) {
+  event.preventDefault();
+  imageApiService.query = event.target.query.value.trim();
+
+  if (imageApiService.query === '') {
+    console.log(123);
+    return;
+  }
+  refs.loadMoreBtn.classList.remove('is-hidden');
+  imageApiService.resetPage();
+  imageApiService.fetchImages().then(data => {
+    clearGallery();
+    imagesMarkup(data);
+  });
+}
+
+function loadMore() {
+  imageApiService.fetchImages().then(data => {
+    imagesMarkup(data);
+  });
+}
+
+function imagesMarkup(data) {
+  refs.gallery.insertAdjacentHTML('beforeend', cardTemplate(data));
+}
+
+function clearGallery() {
+  refs.gallery.innerHTML = '';
+}
 
 // Есть файл apiService.js с дефолтным экспортом объекта отвечающего за логику HTTP-запросов к API
 // Напиши небольшое приложение поиска и просмотра изображений по ключевому слову
