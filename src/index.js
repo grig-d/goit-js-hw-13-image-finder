@@ -1,8 +1,21 @@
 import './styles.css';
 import './js/search-form-render';
+import './js/gallery-render';
+import './js/load-more-render';
+
+
+import refs from './js/refs';
+
 import './js/apiService';
 
-// renderImages
+import searchCountry from './js/search-country';
+
+refs.searchForm.addEventListener('submit', searchCountry);
+
+
+
+//   event.preventDefault();
+//   const searchQuery = event.target.query.value.trim();
 
 // Есть файл apiService.js с дефолтным экспортом объекта отвечающего за логику HTTP-запросов к API
 // Напиши небольшое приложение поиска и просмотра изображений по ключевому слову
@@ -28,11 +41,10 @@ import './js/apiService';
 
 // Кнопка 'Load more'
 // При нажатии на кнопку Load more должна догружаться следующая порция изображений и рендериться вместе с предыдущими.
-// Страница должна автоматически плавно проскроливаться после рендера изображений ровно на один экран, чтобы перевести пользователя на начало загруженных изображений. 
+// Страница должна автоматически плавно проскроливаться после рендера изображений ровно на один экран, чтобы перевести пользователя на начало загруженных изображений.
 // Используй window.scrollTo().
 // window.scrollTo({
-//   top: 100,
-//   left: 100,
+//   top: document.documentElement.offsetHeight,
 //   behavior: 'smooth',
 // });
 
