@@ -1,16 +1,8 @@
 import './styles.css';
-import './js/search-form';
+import './js/search-form-render';
+import './js/apiService';
 
-console.log(123);
-const API_KEY = '21332395-4a2076910c778f7aa83614951';
-let pageNumber = 1;
-let query = 'cyberpunk';
-const url = `https://pixabay.com/api/?image_type=photo&orientation=horizontal&q=${query}&page=${pageNumber}&per_page=12&key=${API_KEY}`;
-
-function pageReset() {
-  pageNumber = 1;
-}
-
+// renderImages
 
 // Есть файл apiService.js с дефолтным экспортом объекта отвечающего за логику HTTP-запросов к API
 // Напиши небольшое приложение поиска и просмотра изображений по ключевому слову
