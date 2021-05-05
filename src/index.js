@@ -1,21 +1,9 @@
 import './styles.css';
-import './js/search-form-render';
-import './js/gallery-render';
-import './js/load-more-render';
-
-
-import refs from './js/refs';
-
 import './js/apiService';
+import refs from './js/refs';
+import searchImages from './js/search-images';
 
-import searchCountry from './js/search-country';
-
-refs.searchForm.addEventListener('submit', searchCountry);
-
-
-
-//   event.preventDefault();
-//   const searchQuery = event.target.query.value.trim();
+refs.searchForm.addEventListener('submit', searchImages);
 
 // Есть файл apiService.js с дефолтным экспортом объекта отвечающего за логику HTTP-запросов к API
 // Напиши небольшое приложение поиска и просмотра изображений по ключевому слову
