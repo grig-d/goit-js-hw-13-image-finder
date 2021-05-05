@@ -28,6 +28,10 @@ function searchImages(event) {
 function loadMore() {
   imageApiService.fetchImages().then(data => {
     imagesMarkup(data);
+    window.scrollTo({
+      top: document.documentElement.offsetHeight,
+      behavior: 'smooth',
+    });
   });
 }
 
@@ -65,10 +69,6 @@ function clearGallery() {
 // При нажатии на кнопку Load more должна догружаться следующая порция изображений и рендериться вместе с предыдущими.
 // Страница должна автоматически плавно проскроливаться после рендера изображений ровно на один экран, чтобы перевести пользователя на начало загруженных изображений.
 // Используй window.scrollTo().
-// window.scrollTo({
-//   top: document.documentElement.offsetHeight,
-//   behavior: 'smooth',
-// });
 
 ////
 // Дополнительно;
